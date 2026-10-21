@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CementWise - Concrete Mix Optimization Tool</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="navbar">
+        <div class="logo-area">
+          <img src="assets/logo.png" alt="CementWise Logo" class="logo-image" />
+          <span class="logo-text">CementWise</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#" class="active">Calculator</a>
+          <a href="#">Saved Mixes</a>
+          <a href="#">Price updates</a>
+          <a href="#">Resources</a>
+          <img
+            src="assets/dark-mode.png"
+            alt="Profile"
+            class="Dark-mode toggle button icon"
+            id="dark-mode-toggle"
+          />
+        </nav>
+        <button
+          type="button"
+          class="hamburger-toggle"
+          id="hamburger-toggle"
+          aria-label="Toggle menu"
+        >
+          <img
+            src="assets/hamburger-menu.png"
+            alt="Menu"
+            class="hamburger-icon"
+          />
+        </button>
+      </header>
+
+      <div class="dashboard-grid">
+        <main class="input-column">
+          <div class="card-header-main">
+            <img
+              src="assets/calculator.png"
+              alt="Create Mix"
+              class="icon-indicator"
+            />
+            <div>
+              <h2>Create your mix</h2>
+              <p class="subtitle">
+                Adjust the ingredients below to estimate concrete strength and
+                cost
+              </p>
+            </div>
+          </div>
+
+          <section class="form-section">
+            <div class="section-title-bar">
+              <div class="badge-step">1</div>
+              <div class="title-text-group">
+                <h3>The recipe</h3>
+                <p class="sub-label">
+                  Set your concrete ingredients per 1 cubic meter (m3)
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn-standard-mix"
+                id="standard-mix-btn"
+              >
+                Use standard mix
+              </button>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <label for="cement"
+                  ><img
+                    src="assets/cement.png"
+                    class="label-inline-icon"
+                    alt=""
+                  />
+                  Cement (Bags)</label
+                >
+                <div class="input-sync-container">
+                  <input
+                    type="number"
+                    id="cement-num"
+                    class="input-sync-box"
+                    value="0"
+                  />
+                  <span class="unit-tag">bags</span>
+                </div>
+              </div>
+              <p class="field-desc">Number of 50kg bags per m cubed</p>
+              <div class="slider-row">
+                <input
+                  type="range"
+                  id="cement"
+                  min="0"
+                  max="11"
+                  step="0.5"
+                  value="0"
+                />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <label for="water"
+                  ><img
+                    src="assets/water.png"
+                    class="label-inline-icon"
+                    alt=""
+                  />
+                  Water (Liters)</label
+                >
+                <div class="input-sync-container">
+                  <input
+                    type="number"
+                    id="water-num"
+                    class="input-sync-box"
+                    value="0"
+                  />
+                  <span class="unit-tag">liters</span>
+                </div>
+              </div>
+              <p class="field-desc">Amount of water per m3</p>
+              <div class="slider-row">
+                <input
+                  type="range"
+                  id="water"
+                  min="0"
+                  max="250"
+                  step="5"
+                  value="0"
+                />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <label for="sand"
+                  ><img
+                    src="assets/sand.png"
+                    class="label-inline-icon"
+                    alt=""
+                  />
+                  Sand (Kg)</label
+                >
+                <div class="input-sync-container">
+                  <input
+                    type="number"
+                    id="sand-num"
+                    class="input-sync-box"
+                    value="0"
+                  />
+                  <span class="unit-tag">Kg</span>
+                </div>
+              </div>
+              <p class="field-desc">Fine aggregate per m3</p>
+              <div class="slider-row">
+                <input
+                  type="range"
+                  id="sand"
+                  min="0"
+                  max="1100"
+                  step="10"
+                  value="0"
+                />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <label for="gravel"
+                  ><img
+                    src="assets/gravel.png"
+                    class="label-inline-icon"
+                    alt=""
+                  />
+                  Gravel (Kg)</label
+                >
+                <div class="input-sync-container">
+                  <input
+                    type="number"
+                    id="gravel-num"
+                    class="input-sync-box"
+                    value="0"
+                  />
+                  <span class="unit-tag">Kg</span>
+                </div>
+              </div>
+              <p class="field-desc">Coarse aggregate per m3</p>
+              <div class="slider-row">
+                <input
+                  type="range"
+                  id="gravel"
+                  min="0"
+                  max="1300"
+                  step="10"
+                  value="0"
+                />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <label for="age"
+                  ><img
+                    src="assets/clock.png"
+                    class="label-inline-icon"
+                    alt=""
+                  />
+                  Curing Time (Days)</label
+                >
+                <div class="input-sync-container">
+                  <input
+                    type="number"
+                    id="age-num"
+                    class="input-sync-box"
+                    value="0"
+                  />
+                  <span class="unit-tag">days</span>
+                </div>
+              </div>
+              <p class="field-desc">Number of days before full strength</p>
+              <div class="slider-row">
+                <input
+                  type="range"
+                  id="age"
+                  min="0"
+                  max="28"
+                  step="1"
+                  value="0"
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="form-section budget-section">
+            <div class="section-title-bar">
+              <div class="badge-step">2</div>
+              <div class="title-text-group">
+                <h3>The budget matrix</h3>
+                <p class="sub-label">
+                  Set the current material costs to see the financial impact
+                </p>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <label for="cost-bag"
+                  ><img
+                    src="assets/cost.png"
+                    class="label-inline-icon"
+                    alt=""
+                  />
+                  Cost per bag of cement (KES)</label
+                >
+                <div class="input-sync-container">
+                  <input
+                    type="number"
+                    id="cost-bag"
+                    class="input-sync-box"
+                    value="0"
+                  />
+                  <span class="unit-tag">KES</span>
+                </div>
+              </div>
+              <p class="field-desc">Current market price (50kg bag)</p>
+              <p class="range-hint">Typical range: KES 750 - 850</p>
+            </div>
+          </section>
+
+          <div class="action-button-row">
+            <button type="button" id="reset-btn" class="btn-secondary">
+              Reset to defaults
+            </button>
+            <button type="button" id="calculate-btn" class="btn-primary">
+              Calculate estimate
+            </button>
+          </div>
+        </main>
+
+        <aside class="output-column">
+          <div class="card-header-main">
+            <img
+              src="assets/analytics.png"
+              alt="Results"
+              class="icon-indicator"
+            />
+            <div>
+              <h2>Your estimated results</h2>
+              <p class="subtitle">
+                Provided strength, cost and insights powered by machine
+                learning.
+              </p>
+            </div>
+          </div>
+
+          <div class="results-matrix-row">
+            <div class="result-matrix-card">
+              <div class="matrix-title">Estimated Strength</div>
+              <div class="matrix-primary-value" id="strength-display">
+                0.0 MPa
+              </div>
+              <div class="status-badge" id="strength-badge">
+                Enter a mix to estimate
+              </div>
+              <div class="matrix-footnote">
+                Based on Elastic Net model prediction
+              </div>
+            </div>
+
+            <div class="result-matrix-card">
+              <div class="matrix-title">Estimated material cost</div>
+              <div
+                class="matrix-primary-value currency"
+                id="total-cost-display"
+              >
+                KES 0
+              </div>
+              <div class="matrix-footnote">per m³</div>
+
+              <div class="mini-cost-table">
+                <div class="cost-table-header-row">
+                  <span>Cost breakdown (KES)</span>
+                  <span>per m³</span>
+                </div>
+                <div class="cost-table-row">
+                  <span id="label-cement-breakdown">Cement (0 bags)</span>
+                  <span id="val-cement-breakdown">0</span>
+                </div>
+                <div class="cost-table-row">
+                  <span>Sand</span>
+                  <span id="val-sand-breakdown">0</span>
+                </div>
+                <div class="cost-table-row">
+                  <span>Gravel</span>
+                  <span id="val-gravel-breakdown">0</span>
+                </div>
+                <div class="cost-table-row">
+                  <span>Water</span>
+                  <span id="val-water-breakdown">0</span>
+                </div>
+                <div class="cost-table-row total-row">
+                  <span>Total</span>
+                  <span id="val-total-breakdown">0</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-matrix-card">
+              <div class="matrix-title">Strength category</div>
+              <div class="matrix-primary-value grade" id="grade-display">
+                ----
+              </div>
+              <div class="grade-suitability-box">
+                <div class="suitability-title">Suitable for:</div>
+                <ul id="suitability-list">
+                  <li>Enter a mix and calculate to see suitability</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="drawer-container">
+            <button
+              type="button"
+              class="drawer-header-trigger"
+              id="drawer-trigger"
+            >
+              <div class="drawer-trigger-title-wrapper">
+                <img src="assets/idea.png" class="drawer-inline-icon" alt="" />
+                <span>Data Science optimization insights</span>
+              </div>
+              <span class="drawer-chevron-icon" id="chevron">
+                <img src="assets/drop-down.svg" alt="" class="chevron-image" />
+              </span>
+            </button>
+
+            <div class="drawer-body-expanded" id="drawer-body">
+              <h4 class="drawer-section-heading">
+                How we have simplified this mix
+              </h4>
+              <p class="drawer-section-intro">
+                We use machine learning models to find the best balance between
+                strength, cost, and ingredient usage. Here's what each model
+                does:
+              </p>
+
+              <div class="three-card-insights-grid">
+                <div class="insight-model-card">
+                  <div class="insight-model-header">
+                    <img
+                      src="assets/lasso.png"
+                      class="model-badge-image"
+                      alt=""
+                    />
+                    <h5>The simplifier (Lasso)</h5>
+                  </div>
+                  <p class="insight-model-desc" id="lasso-desc">
+                    Checks if any ingredients are redundant and could be reduced
+                    or ignored to save money without significantly affecting
+                    strength.
+                  </p>
+                  <div class="insight-model-status-box" id="lasso-status">
+                    In your mix: All ingredients contribute meaningfully to
+                    strength.
+                  </div>
+                </div>
+
+                <div class="insight-model-card">
+                  <div class="insight-model-header">
+                    <img
+                      src="assets/ridge.png"
+                      class="model-badge-image"
+                      alt=""
+                    />
+                    <h5>The Stabilizer (Ridge)</h5>
+                  </div>
+                  <p class="insight-model-desc" id="ridge-desc">
+                    Balances highly interacting ingredients (like water and
+                    cement ratios) to make sure the strength prediction doesn't
+                    wildly spike to drop dangerously.
+                  </p>
+                  <div class="insight-model-status-box" id="ridge-status">
+                    In your mix: All ingredients contribute meaningfully to
+                    strength.
+                  </div>
+                </div>
+
+                <div class="insight-model-card">
+                  <div class="insight-model-header">
+                    <img
+                      src="assets/elastic-net.png"
+                      class="model-badge-image"
+                      alt=""
+                    />
+                    <h5>The final prediction (Elastic Net)</h5>
+                  </div>
+                  <p class="insight-model-desc" id="elastic-desc">
+                    Combines the strengths of both models to give a reliable and
+                    accurate strength estimate.
+                  </p>
+                  <div
+                    class="insight-model-status-box final-result-box"
+                    id="elastic-status"
+                  >
+                    Result: 32.5MPa with high confidence
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer class="results-footer-disclaimer">
+            <p class="disclaimer-text">
+              Note: This tool provides estimated values based on machine
+              learning models trained on real-world data. Always verify with
+              local standards and professional engineering advice for critical
+              projects.
+            </p>
+            <br />
+            <p class="copyright-line">
+              &copy; 2026 Tyra Nyambura. CementWise Concrete Mix Optimization
+              Tool.
+            </p>
+          </footer>
+        </aside>
+      </div>
+    </div>
+
+    <script src="model.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
