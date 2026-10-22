@@ -710,6 +710,19 @@ body {
 }
 
 @media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px 14px;
+  }
+
+  .Dark-mode {
+    width: 26px;
+    height: 26px;
+    margin-left: auto;
+  }
+
   .hamburger-toggle {
     display: flex;
   }
@@ -762,11 +775,6 @@ body {
 
   .logo-text {
     font-size: 26px;
-  }
-
-  .Dark-mode {
-    width: 26px;
-    height: 26px;
   }
 }
 
